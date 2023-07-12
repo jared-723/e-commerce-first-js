@@ -2,6 +2,9 @@
     --general-color: #ffffff;
     --general-shadow: 0 0.5rem 1rem rgba(0,0,0, 0.15);
 
+    /*size*/
+
+    --general-size-modals: 200px;
 }
 
 *{
@@ -16,11 +19,11 @@
 .headMain{
     width: 100vw;
     height: 60px;
-    background-color: black;
     position: fixed;
     top: 0;
     left: 0;
     padding: 0.5rem;
+    transition: background-color 0.5s;
 }
 
 .navbar{
@@ -29,7 +32,10 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: red;
+}
+
+.headMain__scrollY{
+    background-color: white;
 }
 
 .links{
@@ -38,12 +44,12 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: lightblue;
+
     padding-left: 2rem;
 }
 
 .iconStore{
-    background-color: red;
+
     width: 30%;
     height: 80%;
     display: flex;
@@ -60,13 +66,34 @@
 .darkModeCart{
     width: 30%;
     height: 100%;
-    background-color: lightgreen;
+
     font-size: 10px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     font-size: 25px;
-    padding-right: 2rem;
+    padding-right: 1.5rem;
+    position: relative;
+    gap:0.5rem
+}
+
+.amountProductNav{
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    
+    color: white;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(244, 8, 8, 0.841);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 3rem;
+    top:1.5rem;
+    font-weight: bold;
 }
 
 /*products*/
@@ -74,7 +101,6 @@
 .principalContainer{
     max-width: 1024px;
     min-height: 100vh;
-    margin-top: 60px ;
     background-color: lightcoral;
     display: flex;
     flex-direction: column;
@@ -93,12 +119,52 @@
     margin: auto;
 }
 
+/*section PageCover*/
+
 .pageCover{
     background-color: lightseagreen;
-    width: 200px;
-    height: 200px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+.showCase{
+    height: 50%;
+    background-color: orange;
+    display: flex;
+}
+
+
+.none{
+    width: 50%;
+    height: 100%;
+    background-color: red;
+    padding-top: 60px;
+}
+
+.imgShowCase{
+    background-color: blue;
+    width: 50%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.imgShowCase img{
+    width: 100%;
+    display: block;
+}
+
+
+.info__showCase{
+    height: 50%;
+    background-color: lightgray;
+}
+
+/*section Products*/
 .showProducts{
     width: 100%;
     background-color: lightsalmon;
@@ -132,27 +198,16 @@
     place-items: center;
 }
 
-img{
-    width: 100%;
-}
 
 img{
     width: 100%;
     display: block;
 }
 
-
 .product__info{
     display: flex;
     flex-direction: column;
 }
-
-/* .price__stock >.bx-plus-circle{
-    font-size: 20px;
-    position: absolute;
-    align-items: flex-start;
-    justify-self: flex-start;
-} */
 
 .product__info{
     padding: 0 1rem 1rem 1rem;
@@ -234,6 +289,7 @@ footer{
     background-color: #ccc;
     border-radius: 1rem;
 }
+
 .info__cart{
     display: flex;
     flex-direction: column;
@@ -281,3 +337,64 @@ footer{
     font-weight: bolder;
 }
 
+/*modals*/
+
+.menuQuery{
+    width: 100%;
+    height: 100%;
+    background-color: var(--general-color);
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    place-items: center;
+    transform: translate(100%);
+    transition: transform 0.5s;
+}
+
+.menuQuery p{
+    justify-self: flex-end;
+    position: relative;
+    top: 0.2rem;
+    right: 2.2rem;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.menuQuery__show{
+    transform: translate(0%);
+}
+
+.homeProduct{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:1.5rem;
+}
+
+.homeProduct a{
+    padding: 1rem;
+    font-size: 20px;
+    font-style: none;
+    text-decoration: none;
+    font-weight: bolder;
+    border-radius: 0.5rem;
+    box-shadow: var(--general-shadow);
+    color: black;
+}
+
+/*querys*/
+
+@media (min-width: 500px){
+    .principalContainer{
+        background-color: blue;
+    }
+}
+
+@media (min-width: 700px){
+    .principalContainer{
+        background-color: purple;
+    }
+}

@@ -13,6 +13,26 @@ async function getApi(){
     }
 }
 
+function animationNavBar(){
+    const headMainHTMl = document.querySelector('.headMain');
+    window.addEventListener('scroll', function(){
+
+        headMainHTMl.classList.toggle('headMain__scrollY', window.scrollY > 300) 
+    })
+}
+
+function amountCartNavbar(store){
+
+    const amountProductNavHTMl = document.querySelector('.amountProductNav');
+    let amount= 0;
+
+    for (const product in store.cart) {
+        amount+= store.cart[product].amount;
+    }
+
+    amountProductNavHTMl.textContent= amount;
+}
+
 function addCart(store){
     const accessStore = store.cart
 
@@ -38,6 +58,7 @@ function addCart(store){
 
                 printProductsInCart(store);
                 totalCart(store);
+                amountCartNavbar(store);
             }
     })
 }
@@ -79,6 +100,7 @@ function plusMinusDeleteCart(store){
         window.localStorage.setItem('cart', JSON.stringify(store.cart));
         printProductsInCart(store);
         totalCart(store);
+        amountCartNavbar(store);
     })
 }
 
@@ -163,16 +185,22 @@ function buyCart(store){
         totalCart(store);
         printProductsInCart(store);
         prinProducts(store);
+        amountCartNavbar(store);
     })
 }
+
 
 function showCartAndDarkMode(){
     const cartHTML=document.querySelector('.productsCart');
     const darkModeCartHTMl = document.querySelector('.darkModeCart');
+    const menuQueryHTML = document.querySelector('.menuQuery')
 
     darkModeCartHTMl.addEventListener('click', function(e){
         if(e.target.classList.contains('bxs-cart')){
             document.querySelector('.cartContent').classList.add('cartContentShow')
+        }
+        if(e.target.classList.contains('bx-menu-alt-right')){
+            document.querySelector('.menuQuery').classList.add('menuQuery__show')
         }
     })
     cartHTML.addEventListener('click', function(e){
@@ -180,7 +208,16 @@ function showCartAndDarkMode(){
             document.querySelector('.cartContent').classList.remove('cartContentShow');
         }
     })
+
+    menuQueryHTML.addEventListener('click', function(e){
+        if(e.target.classList.contains('quitQuery')){
+            document.querySelector('.menuQuery').classList.remove('menuQuery__show')
+        }
+    })
+
+    
 }
+
 
 function prinProducts(store){
     let html = '';
@@ -225,6 +262,8 @@ async function main(){
     plusMinusDeleteCart(store);
     totalCart(store);
     buyCart(store);
+    amountCartNavbar(store);
+    animationNavBar();
 }
 
 
