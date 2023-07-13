@@ -42,7 +42,7 @@ function addCart(store){
 
     productHTML.addEventListener('click', function(e){
         let html = '';
-            if(e.target.classList.contains('bx-plus-circle')){
+            if(e.target.classList.contains('bx-plus')){
                 const id = Number(e.target.id);
                 const findProduct = store.products.find((product) => product.id === id);
 
@@ -235,11 +235,11 @@ function prinProducts(store){
                         $ ${product.price}.00
                         ${
                             product.quantity ? 
-                            `<i class='bx bx-plus-circle' id="${product.id}"></i>` 
+                            `<i  class='bx bx-plus' id="${product.id}"></i>
+                            <p class="quantityProduct">Stock: ${product.quantity}</p>` 
                             : "<span class='soldOut'>Sold Out</span>"
                         } 
                         </h3> 
-                        <p class="quantityProduct">Stock: ${product.quantity}</p>
                     </div>
                         <p class="product__description" id="${product.id}"> 
                         ${product.name}
@@ -253,32 +253,37 @@ function prinProducts(store){
 
 function showModalProduct(){
     const modalProductHTML = document.querySelector('.modalProduct');
-    const card__productHTML = document.querySelector('.card__product')
+    const productsHTML = document.querySelector('.products')
 
-    card__productHTML.addEventListener('click', function(e){
+    productsHTML.addEventListener('click', function(e){
         if(e.target.classList.contains('product__description')){
             modalProductHTML.classList.add('modalProduct__show')
+        }
+    })
+
+    modalProductHTML.addEventListener('click',function(e){
+        if(e.target.classList.contains('quitModal')){
+            modalProductHTML.classList.remove('modalProduct__show')
         }
     })
 }
 
 function modalProduct(store){
-    const card__productHTML = document.querySelector('.card__product')
+    const card__productHTML = document.querySelector('.products')
 
     card__productHTML.addEventListener('click', function(e){
         if(e.target.classList.contains('product__description')){
 
             const idCompare = Number(e.target.id);
             const findProduct = store.products.find((product) => product.id === idCompare);
-            console.log(findProduct);
 
             const{name,image,id,price, quantity, category, description} = findProduct
 
             let html = `   
                 <div class="productInModal">
+                    <i class='bx bx-x quitModal'></i>
                     <div class="imgModal">
                         <img src="${image}" alt="${category}"></img>
-                        <i class='bx bx-x'></i>
                     </div>
                     <div class="infoModal">
                         <div class="descriptionModal">
@@ -286,11 +291,15 @@ function modalProduct(store){
                             <p>${description}</p>
                         </div>
                         <div class="priceStockAdd">
-                            <div class="priceAdd">                            
-                                <span>$${price}</span>
-                                <i class='bx bx-plus'></i>
+                            <div class="priceAdd">
+                            <span class="priceModal">$ ${price}.00 </span>                            
+                            ${
+                                quantity ? 
+                                `<i class='bx bx-plus'id="${id}"></i>
+                                <span class="stockModal">Stock: ${quantity}</span>` 
+                                : "<span class='soldOut'>Sold Out</span>"
+                            } 
                             </div>
-                            <span>Stock: ${quantity}</span>
                         </div>
                     </div>
                 </div>
