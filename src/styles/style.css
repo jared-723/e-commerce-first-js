@@ -864,14 +864,14 @@ footer{
     right: 0;;
     height: 100%;
     width: 100%;
-    background-color: white;
+    background-color: var(--white);
     display: grid;
     place-items: center;
     transition: display 0.2s;
 }
 
 .load{
-    border: 5px solid black;
+    border: 5px solid var(--black);
     border-top-color:transparent;
     width: 100px;
     height: 100px;
