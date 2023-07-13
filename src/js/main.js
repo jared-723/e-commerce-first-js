@@ -40,6 +40,57 @@ function animationNavBar(){
     })
 }
 
+function darkModeShow(body){
+    const bodyHTML = document.querySelector('body');
+
+    const darkModeCartHTML = document.querySelector('.darkModeCart');
+
+    const bxs_sunHTML= document.querySelector('.bxs-sun')
+    const bxs_moonHTML= document.querySelector('.bxs-moon')
+
+    darkModeCartHTML.addEventListener('click',function(e){
+        if(e.target.classList.contains('bxs-moon')){
+            bodyHTML.classList.add('body__DarkMode');
+            bxs_sunHTML.classList.add('bxs-sun__unshow');
+            bxs_moonHTML.classList.add('bxs-moon__show');
+            if(bodyHTML.classList.contains('body__DarkMode')){
+                localStorage.setItem('darkmode', 'true')
+            }
+        }
+    })
+        
+    darkModeCartHTML.addEventListener('click',function(e){
+        if(e.target.classList.contains('bxs-sun')){
+            bodyHTML.classList.remove('body__DarkMode');
+            bxs_sunHTML.classList.remove('bxs-sun__unshow');
+            bxs_moonHTML.classList.remove('bxs-moon__show');
+            if(bodyHTML.classList.contains('body__DarkMode')){
+                localStorage.setItem('darkmode', 'true')
+            }else{
+                localStorage.setItem('darkmode', 'false')
+            }
+        }
+    })
+
+    
+
+}
+
+function localStorageDarkmode(){
+    const bxs_sunHTML= document.querySelector('.bxs-sun')
+    const bxs_moonHTML= document.querySelector('.bxs-moon')
+
+    if(localStorage.getItem('darkmode')=== 'true'){
+        document.body.classList.add('body__DarkMode')
+        bxs_sunHTML.classList.add('bxs-sun__unshow');
+        bxs_moonHTML.classList.add('bxs-moon__show');
+    }else{
+        document.body.classList.remove('body__DarkMode')
+        bxs_sunHTML.classList.remove('bxs-sun__unshow');
+        bxs_moonHTML.classList.remove('bxs-moon__show');
+    }
+}
+
 function amountCartNavbar(store){
 
     const amountProductNavHTMl = document.querySelector('.amountProductNav');
@@ -361,6 +412,7 @@ async function main(){
         products: JSON.parse(window.localStorage.getItem("products")) || await getApi(),
         cart: JSON.parse(window.localStorage.getItem("cart")) || {}
     }
+
     prinProducts(store);
     showCartAndDarkMode();
     addCart(store);
@@ -374,6 +426,8 @@ async function main(){
     showModalProduct();
     addCartModal(store);
     configmixItUp();
+    darkModeShow();
+    localStorageDarkmode();
 }
 
 main();
