@@ -1,6 +1,5 @@
 const dataBase = 'https://ecommercebackend.fundamentos-29.repl.co/';
 
-
 window.addEventListener("DOMContentLoaded", (event) => {
     document.querySelector('.modalLoading').classList.add('modalLoading__unshow');
 });

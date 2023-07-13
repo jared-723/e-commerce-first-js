@@ -110,7 +110,7 @@
 .principalContainer{
     max-width: 1024px;
     min-height: 100vh;
-    background-color: lightcoral;
+    background-color: gray;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,7 +120,7 @@
 .container{
     max-width:1024px;
     height: auto;
-    background-color: red;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,7 +131,6 @@
 /*section PageCover*/
 
 .pageCover{
-    background-color: lightseagreen;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -140,16 +139,12 @@
 
 .showCase{
     height: 60%;
-    background-color: orange;
     display: flex;
 }
-
 
 .none{
     width: 50%;
     height: 100%;
-    background-color: red;
-    padding-top: 60px;
 }
 
 .imgShowCase{
@@ -159,7 +154,6 @@
     display: grid;
     place-items: center;
     margin: 0 auto;
-    padding-top: 60px;
 }
 
 .imgShowCase img{
@@ -167,10 +161,40 @@
     display: block;
 }
 
-
 .info__showCase{
     height: 40%;
-    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap:1rem;
+}
+
+.titleShowCase{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.InfoShowCase{
+    font-weight: lighter;
+    font-size: 17px;
+    line-height: 1.2;
+    color: rgba(81, 80, 80, 0.8)
+}
+
+.priceShowCase{
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(234, 64, 64);
+}
+
+.btnShowCase{
+    padding: 1rem;
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 140px;
 }
 
 /*section Products*/
