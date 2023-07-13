@@ -1,6 +1,13 @@
 :root{
-    --general-color: #ffffff;
     --general-shadow: 0 0.5rem 1rem rgba(0,0,0, 0.15);
+
+    --one:rgb(4, 96, 133);
+    --two:rgb(11, 102, 106);
+    --three:rgb(53, 162, 159);
+    --four:rgb(151, 254, 237);
+    --white: rgb(255,255,255);
+    --black:rgb(0,0,0);
+    --gray:rgb(201, 201, 201);
 
     /*size*/
 
@@ -12,6 +19,7 @@
     padding:0 ;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--black);
 }
 
 /*Navbar*/
@@ -25,6 +33,7 @@
     left: 0;
     padding: 0rem 0.5rem;
     transition: background-color 0.5s, height 0.5s;
+    cursor: default;
 }
 
 .navbar{
@@ -37,40 +46,65 @@
 }
 
 .headMain__scrollY{
-    background-color: white;
+    background-color: var(--white);
     box-shadow: var(--general-shadow);
     height: 70px;
 }
 
 .links{
-    width: 30%;
+    width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 
     padding-left: 2rem;
 }
 
+.links_color{
+    color: var(--white);
+}
+
 .iconStore{
 
-    width: 30%;
+    width: 100%;
     height: 80%;
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+
 }
 
-.bxs-universal-access{
-    width: 30px;
-    height: 30px;
+.iconStore span{
+    color: var(--black);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.homeProductNavbar{
+    display: none;
+    width: auto;
+}
+
+.linksHNavbar{
+    color:var(--black);
+}
+
+.bxl-play-store{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--three);
     font-size: 25px;
     align-self: center;
+    color: var(--white);
+    text-align: center;
+    padding-top: 0.4rem;
 }
 
 .darkModeCart{
-    width: 30%;
+    width: 50%;
     height: 100%;
-
     font-size: 10px;
     display: flex;
     align-items: center;
@@ -80,16 +114,19 @@
     position: relative;
     gap:0.5rem
 }
+.darkModeCart i{
+    cursor: pointer;
+}
 
 .amountProductNav{
     width: 20px;
     height: 20px;
     font-size: 0.8rem;
     
-    color: white;
+    color: var(--white);
     display: inline-block;
     border-radius: 50%;
-    background-color: rgba(244, 8, 8, 0.841);
+    background-color: var(--three);
 
     display: flex;
     justify-content: center;
@@ -108,7 +145,7 @@
 /*products*/
 
 .principalContainer{
-    max-width: 1024px;
+    max-width: 1024px ;
     min-height: 100vh;
     background-color: gray;
     display: flex;
@@ -120,7 +157,7 @@
 .container{
     max-width:1024px;
     height: auto;
-    background-color: rgb(202, 202, 202);
+    background-color: var(--four);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,7 +187,7 @@
 }
 
 .imgShowCase{
-    background-color: blue;
+    background-color: var(--one);
     width: 50%;
     height: 100%;
     display: grid;
@@ -180,23 +217,30 @@
     font-weight: lighter;
     font-size: 17px;
     line-height: 1.2;
-    color: rgba(81, 80, 80, 0.8)
+    color: var(--black);
+    opacity: 0.6;
+    
 }
 
 .priceShowCase{
     font-size: 24px;
     font-weight: bold;
-    color: rgb(234, 64, 64);
+    color: var(--two);
 }
 
 .btnShowCase{
     padding: 1rem;
     text-decoration: none;
-    background-color: blue;
-    color: white;
+    background-color: var(--one);
+    color: var(--white);
     font-weight: bold;
     text-align: center;
     width: 140px;
+    transition: transform 0.3s;
+}
+
+.btnShowCase:hover{
+    transform:scale(1.1) ;
 }
 
 /*section Products*/
@@ -219,12 +263,29 @@
     justify-content: center;
 }
 
-.filterButtons .btn{
+.filterButtons > .btn{
     padding: 1rem;
     border-style: none;
     font-size: 15px;
     font-weight: bold;
+    background-color: var(--two);
+    color: var(--white);
+    transition: background-color 0.5s;
+    border-radius:0.5rem;
 } 
+
+.filterButtons .btn span{
+    color:var(--white);
+}
+
+.filterButtons .btn:hover{
+    background-color: var(--one);
+    cursor: pointer;
+}
+
+.btn span:hover{
+    color:var(--white);
+}
 
 .filterButtons span{
     font-size: 13px;
@@ -244,14 +305,14 @@
 .products{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     margin: 0 auto;
     gap:2rem;
     padding: 0rem 2rem;
 }
 
 .card__product{
-    background-color: white;
+    background-color: var(--white);
     border-radius: 0.5rem;
     display: grid;
     place-items: center;
@@ -261,7 +322,7 @@
 }
 
 .product__image{
-    background-color: lightgray;
+    background-color: var(--gray);
     width: 100%;
     padding: 1rem;
 }
@@ -287,6 +348,12 @@ img{
 
 .product__info .product__description{
     cursor: pointer;
+    transition: color 0.3s;
+}
+
+.product__info .product__description:hover{
+    cursor: pointer;
+    color:var(--three)
 }
 
 .price__stock h3{
@@ -300,14 +367,22 @@ img{
     place-items: center;
     width: 30px;
     height: 30px;
-    background-color: black;
-    color: white;
+    background-color: var(--four);
+    color: var(--black);
+    font-weight: bold;
     border-radius: 50%;
     position: absolute;
     top:-2rem;
     right: 1rem;
-    
+    transition:background-color 0.3s, font-weight 0.3s, color 0.3s;
+    cursor: pointer;
 }
+
+.priceProduct .bx-plus:hover{
+    background-color: var(--two);
+    color: white;
+}
+
 
 .priceProduct .quantityProduct{
     font-size: 15px;
@@ -332,7 +407,7 @@ img{
 footer{
     width: 100%;
     height: 50rem;
-    background-color: gray;
+    background-color: var(--two);
     padding: 4rem 1.5rem;
     display: flex;
     flex-direction: column;
@@ -345,20 +420,26 @@ footer{
     flex-direction: column;
     gap:1.5rem;
 }
+
 .info__Footer{
     display:flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
+.info__Footer h3{
+    color:var(--four);
+    font-size: 20px;
+}
+
 .info__Footer a{
     text-decoration: none;
-    color: black;
+    color: var(--four)
 }
 
 .info__Footer a:hover{
     text-decoration: none;
-    color: blue;
+    color: var(--white);
 }
 
 .authorApi{
@@ -368,37 +449,40 @@ footer{
 }
 
 .authorPage{
-    background-color: red;
+    background-color: var(--three);
     padding: 1rem;
     text-align: center;
+    font-weight: bold;
+
 }
 
 .authorPage a{
     text-decoration: none;
-    color: black;
-    font-weight: bold;
+    color: var(--four);
+    font-weight: bolder;
     transition: color 0.2s;
 }
 
 .authorPage a:hover{
-    color: blue;
+    color: var(--white);
 }
 
 .apiUsed{
-    background-color: red;
+    background-color: var(--three);
     padding: 1rem;
     text-align: center;
+    font-weight: bold;
 }
 
 .apiUsed a{
     text-decoration: none;
-    color: black;
-    font-weight: bold;
+    color: var(--four);
+    font-weight: bolder;
     transition: color 0.2s;
 }
 
 .apiUsed a:hover{
-    color: blue;
+    color: var(--white);
 }
 
 
@@ -411,7 +495,7 @@ footer{
     right: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--general-color);
+    background-color: var(--white);
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -436,11 +520,12 @@ footer{
 
     width: 20px;
     height: 20px;
-    background-color: red;
+    font-weight: bold;
     justify-self: flex-end;
     align-self: flex-start;
     position: relative;
     text-align: center;
+    cursor: pointer;
 }
 
 .productsInCart{
@@ -462,7 +547,7 @@ footer{
 
 .img__cart{
     width: 40%;
-    background-color: #ccc;
+    background-color: var(--gray);
     border-radius: 1rem;
 }
 
@@ -474,18 +559,33 @@ footer{
     gap:0.3rem;
 }
 
-.options__unit i {
-    cursor: pointer;
+.info__cart h4{
+    color:var(--black);
 }
 
-.options__unit .bx-trash-alt{
-    color: red;
+.info__cart p{
+    color:var(--black);
+    opacity: 0.6;
+}
+
+.options__unit i {
+    cursor: pointer;
+    color: var(--two);
+    font-weight: bold;
+    
+}
+
+.options__unit span{
+    color: var(--black);
+}
+
+.options__unit i:hover{
+    color: var(--four);
 }
 
 .purchaseCart{
     width: 100%;
     height: 20%;
-    background-color: lightgreen;
     display: flex;
     flex-direction: column;
     padding: 0rem 1rem;
@@ -498,6 +598,11 @@ footer{
     height: 60%;
 }
 
+.info__purchase span{
+    font-weight: bold;
+}
+
+
 .purchaseCart .btn{
     height: 40%;
     margin-bottom: 2rem;
@@ -505,12 +610,19 @@ footer{
 
 .btn__buy{
     padding: 1rem;
-    background-color: black;
+    background-color: var(--three);
     color: white;
+    border: none;
     border-radius:0.5rem ;
     overflow: hidden;
     font-size: 1rem;
     font-weight: bolder;
+    transition: background-color 0.3s;
+}
+
+.btn__buy:hover{
+    background-color: var(--two);
+    cursor: pointer;
 }
 
 /*modals*/
@@ -629,6 +741,7 @@ footer{
 .descriptionModal{
     display: flex;
     flex-direction: column;
+    gap:0.5rem;
 }
 
 .descriptionModal h4{
@@ -651,14 +764,22 @@ footer{
 }
 
 .priceAdd i{
-    background-color: black;
-    color: white;
+    background-color: var(--four);
+    color: var(--black);
+    font-weight: bold;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     justify-self: flex-start;
     display: grid;
     place-items: center;
+    cursor: pointer;
+    transition:background-color 0.3s, color 0.3s;
+}
+
+.priceAdd i:hover{
+    background-color: var(--two);
+    color: white;
 }
 
 .priceModal{
@@ -724,18 +845,79 @@ footer{
 /*querys*/
 
 
-@media (min-width: 500px){
-    .container{
-        background-color: lightblue;
-    }
-
-    .products{
-        gap:1rem;
-    }
-}
 
 @media (min-width: 700px){
-    .principalContainer{
-        background-color: purple;
+
+    .links{
+        width: 50%;
+        gap:1rem;
     }
+
+    .darkModeCart{
+        width: 50%;
+    }
+
+    .iconStore{
+        width: auto;
+    }
+
+    .homeProductNavbar{
+        display: flex;
+        width: auto;
+        gap:0.5rem;
+    }
+
+    .homeProductNavbar .linksHNavbar{
+        text-decoration: none;
+        transition: color 0.2s, font-weight 0.2s;
+    }
+
+    .homeProductNavbar .linksHNavbar:hover{
+        color:var(--three);
+        font-weight: bold;
+    }
+
+    .bx-menu-alt-right{
+        visibility: hidden;
+    }
+
+    .pageCover{
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    .none{
+        display: none;
+    }
+
+    .showCase{
+        width: 40%;
+        height: 100%;
+    }
+
+    .imgShowCase{
+        width: 100%;
+    }
+
+    .info__showCase{
+        width: 60%;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .titleShowCase{
+        font-size: 40px;
+    }
+
+    footer{
+        height: 30rem;
+    }
+
+    .infoFooter{
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0rem 2rem;
+    }
+
 }

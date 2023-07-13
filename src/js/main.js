@@ -31,10 +31,12 @@ function configmixItUp() {
 function animationNavBar(){
     const headMainHTMl = document.querySelector('.headMain');
     const totalProductHTML = document.querySelector('.amountProductNav')
+
     window.addEventListener('scroll', function(){
 
         headMainHTMl.classList.toggle('headMain__scrollY', window.scrollY > 300)
-        totalProductHTML.classList.toggle('amountProductNav__scrollY', window.scrollY > 300) 
+        totalProductHTML.classList.toggle('amountProductNav__scrollY', window.scrollY > 300)
+
     })
 }
 
