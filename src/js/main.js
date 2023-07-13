@@ -13,6 +13,10 @@ async function getApi(){
     }
 }
 
+setTimeout(() => {
+    document.querySelector('.modalLoading').classList.add('modalLoading__unshow')
+}, 5000);
+
 function animationNavBar(){
     const headMainHTMl = document.querySelector('.headMain');
     const totalProductHTML = document.querySelector('.amountProductNav')
@@ -41,7 +45,7 @@ function addCart(store){
     const productHTML = document.querySelector('.products');
 
     productHTML.addEventListener('click', function(e){
-        let html = '';
+
             if(e.target.classList.contains('bx-plus')){
                 const id = Number(e.target.id);
                 const findProduct = store.products.find((product) => product.id === id);
@@ -191,7 +195,6 @@ function buyCart(store){
     })
 }
 
-
 function showCartAndDarkMode(){
     const cartHTML=document.querySelector('.productsCart');
     const darkModeCartHTMl = document.querySelector('.darkModeCart');
@@ -220,7 +223,6 @@ function showCartAndDarkMode(){
     
 }
 
-
 function prinProducts(store){
     let html = '';
     for (const product of store.products) {
@@ -232,7 +234,7 @@ function prinProducts(store){
                 <div class="product__info">
                     <div class ="price__stock">
                         <h3 class="priceProduct">
-                        $ ${product.price}.00
+                        <p>$${product.price}.00</p>
                         ${
                             product.quantity ? 
                             `<i  class='bx bx-plus' id="${product.id}"></i>
@@ -292,7 +294,7 @@ function modalProduct(store){
                         </div>
                         <div class="priceStockAdd">
                             <div class="priceAdd">
-                            <span class="priceModal">$ ${price}.00 </span>                            
+                            <span class="priceModal">$${price}.00</span>                            
                             ${
                                 quantity ? 
                                 `<i class='bx bx-plus'id="${id}"></i>
@@ -308,6 +310,36 @@ function modalProduct(store){
         }
     })
 
+}
+
+function addCartModal(store){
+    const modalProductHTML = document.querySelector('.modalProduct');
+    const accessStore = store.cart
+
+    modalProductHTML.addEventListener('click',function(e){
+        if(e.target.classList.contains('bx-plus')){
+            if(e.target.classList.contains('bx-plus')){
+                const id = Number(e.target.id);
+                const findProduct = store.products.find((product) => product.id === id);
+
+                if(accessStore[findProduct.id]){
+
+                    if(findProduct.quantity === accessStore[findProduct.id].amount) 
+                        return alert("no hay mas en stock")
+                        
+                    accessStore[findProduct.id].amount++;
+                }else {
+                    accessStore[findProduct.id] ={...findProduct, amount: 1}
+                }
+
+                window.localStorage.setItem("cart", JSON.stringify(accessStore))
+
+                printProductsInCart(store);
+                totalCart(store);
+                amountCartNavbar(store);
+            }
+        }
+    })
 }
 
 
@@ -327,6 +359,7 @@ async function main(){
     animationNavBar();
     modalProduct(store);
     showModalProduct();
+    addCartModal(store);
 }
 
 
