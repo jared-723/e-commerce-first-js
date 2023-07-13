@@ -17,9 +17,16 @@ async function getApi(){
     }
 }
 
-// setTimeout(() => {
-//     document.querySelector('.modalLoading').classList.add('modalLoading__unshow')
-// }, 5000);
+function configmixItUp() {
+	mixitup(".products", {
+		selectors: {
+			target: ".card__product",
+		},
+		animation: {
+			duration: 200,
+		},
+	});
+}
 
 function animationNavBar(){
     const headMainHTMl = document.querySelector('.headMain');
@@ -231,7 +238,7 @@ function prinProducts(store){
     let html = '';
     for (const product of store.products) {
         html += `
-            <div class ="product_${product.category} card__product">
+            <div class ="product ${product.category} card__product">
                 <div class="product__image">
                     <img src="${product.image}" class="img__product"></img>
                 </div>
@@ -364,6 +371,7 @@ async function main(){
     modalProduct(store);
     showModalProduct();
     addCartModal(store);
+    configmixItUp();
 }
 
 main();
