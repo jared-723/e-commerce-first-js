@@ -22,8 +22,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    padding: 0.5rem;
-    transition: background-color 0.5s;
+    padding: 0rem 0.5rem;
+    transition: background-color 0.5s, height 0.5s;
 }
 
 .navbar{
@@ -32,10 +32,13 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    border: none;
 }
 
 .headMain__scrollY{
     background-color: white;
+    box-shadow: var(--general-shadow);
+    height: 70px;
 }
 
 .links{
@@ -92,8 +95,13 @@
     align-items: center;
     position: absolute;
     right: 3rem;
-    top:1.5rem;
+    top:2rem;
     font-weight: bold;
+    transition: top 0.5s;
+}
+
+.amountProductNav__scrollY{
+    top:2.2rem;
 }
 
 /*products*/
@@ -383,6 +391,20 @@ footer{
     border-radius: 0.5rem;
     box-shadow: var(--general-shadow);
     color: black;
+}
+
+.modalProduct{
+    position: fixed;
+    background-color: rgba(0,0,0, 0.5);
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.modalProduct__show{
+    display: block;
 }
 
 /*querys*/

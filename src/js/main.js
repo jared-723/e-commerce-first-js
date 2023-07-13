@@ -15,9 +15,11 @@ async function getApi(){
 
 function animationNavBar(){
     const headMainHTMl = document.querySelector('.headMain');
+    const totalProductHTML = document.querySelector('.amountProductNav')
     window.addEventListener('scroll', function(){
 
-        headMainHTMl.classList.toggle('headMain__scrollY', window.scrollY > 300) 
+        headMainHTMl.classList.toggle('headMain__scrollY', window.scrollY > 300)
+        totalProductHTML.classList.toggle('amountProductNav__scrollY', window.scrollY > 300) 
     })
 }
 
@@ -249,6 +251,56 @@ function prinProducts(store){
     document.querySelector('#pr0ductsApi').innerHTML = html;
 }
 
+function showModalProduct(){
+    const modalProductHTML = document.querySelector('.modalProduct');
+    const card__productHTML = document.querySelector('.card__product')
+
+    card__productHTML.addEventListener('click', function(e){
+        if(e.target.classList.contains('product__description')){
+            modalProductHTML.classList.add('modalProduct__show')
+        }
+    })
+}
+
+function modalProduct(store){
+    const card__productHTML = document.querySelector('.card__product')
+
+    card__productHTML.addEventListener('click', function(e){
+        if(e.target.classList.contains('product__description')){
+
+            const idCompare = Number(e.target.id);
+            const findProduct = store.products.find((product) => product.id === idCompare);
+            console.log(findProduct);
+
+            const{name,image,id,price, quantity, category, description} = findProduct
+
+            let html = `   
+                <div class="productInModal">
+                    <div class="imgModal">
+                        <img src="${image}" alt="${category}"></img>
+                        <i class='bx bx-x'></i>
+                    </div>
+                    <div class="infoModal">
+                        <div class="descriptionModal">
+                            <h4>${name}</h4>
+                            <p>${description}</p>
+                        </div>
+                        <div class="priceStockAdd">
+                            <div class="priceAdd">                            
+                                <span>$${price}</span>
+                                <i class='bx bx-plus'></i>
+                            </div>
+                            <span>Stock: ${quantity}</span>
+                        </div>
+                    </div>
+                </div>
+            `
+            document.querySelector('.modalProduct').innerHTML = html;
+        }
+    })
+
+}
+
 
 async function main(){
     const store = {
@@ -264,6 +316,8 @@ async function main(){
     buyCart(store);
     amountCartNavbar(store);
     animationNavBar();
+    modalProduct(store);
+    showModalProduct();
 }
 
 
