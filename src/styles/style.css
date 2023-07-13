@@ -771,7 +771,7 @@ footer{
 
 .productInModal{
     position: relative;
-    background-color: white;
+    background-color: var(--white);
     max-width: 400px;
 
     border-radius: 1rem;
