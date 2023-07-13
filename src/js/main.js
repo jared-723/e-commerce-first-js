@@ -1,5 +1,11 @@
 const dataBase = 'https://ecommercebackend.fundamentos-29.repl.co/';
 
+
+window.addEventListener("DOMContentLoaded", (event) => {
+    document.querySelector('.modalLoading').classList.add('modalLoading__unshow');
+    main();
+});
+
 async function getApi(){
     try {
         const db = await fetch(dataBase);
@@ -13,9 +19,9 @@ async function getApi(){
     }
 }
 
-setTimeout(() => {
-    document.querySelector('.modalLoading').classList.add('modalLoading__unshow')
-}, 5000);
+// setTimeout(() => {
+//     document.querySelector('.modalLoading').classList.add('modalLoading__unshow')
+// }, 5000);
 
 function animationNavBar(){
     const headMainHTMl = document.querySelector('.headMain');
@@ -362,5 +368,3 @@ async function main(){
     addCartModal(store);
 }
 
-
-main();
