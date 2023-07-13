@@ -380,9 +380,8 @@ img{
 
 .priceProduct .bx-plus:hover{
     background-color: var(--two);
-    color: white;
+    color: var(--white);
 }
-
 
 .priceProduct .quantityProduct{
     font-size: 15px;
@@ -633,7 +632,7 @@ footer{
     z-index: 3;
     width: 100%;
     height: 100%;
-    background-color: var(--general-color);
+    background-color: var(--white);
     position: fixed;
     top: 0;
     right: 0;
@@ -702,8 +701,8 @@ footer{
 }
 
 .modalProduct .bx-x{
-    background-color: black;
-    color: white;
+    background-color: var(--black);
+    color: var(--white);
     width: 25px;
     height: 25px;
     position: absolute;
@@ -919,5 +918,10 @@ footer{
         justify-content: space-between;
         padding: 0rem 2rem;
     }
+};
 
-}
+@media (min-width: 1000px){
+    .principalContainer{
+        max-width: 100vw;
+    }
+};
